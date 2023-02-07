@@ -71,11 +71,11 @@ void	rrb(t_element **stack_b)
 
 void	rrr(t_element **stack_a, t_element **stack_b)
 {
-	rotate(stack_a);
-	rotate(stack_b);
+	rev_rot(stack_a);
+	rev_rot(stack_b);
 	ft_printf("rrr\n");	
 }
-
+/*
 int     main(int ac, char **av)
 {
 	t_element	*head_a;
@@ -92,9 +92,5 @@ int     main(int ac, char **av)
 	printf("stack a:\n");
 	ft_print_list(head_a);
 
-
-	
-
 	return 0;	
-
-}
+}*/

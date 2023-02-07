@@ -27,13 +27,13 @@ void    swap(t_element **stack)
 void	sa(t_element **stack_a)
 {
 	swap(stack_a);
-	ft_printf("sa");
+	ft_printf("sa\n");
 }
 
 void	sb(t_element **stack_b)
 {
 	swap(stack_b);
-	ft_printf("sb");
+	ft_printf("sb\n");
 }
 
 
@@ -41,8 +41,10 @@ void	ss(t_element **stack_a, t_element **stack_b)
 {
 	swap(stack_a);
 	swap(stack_b);	
+	ft_printf("ss\n");
 }
 
+/*
 int     main(int ac, char **av)
 {
 	t_element	*head_a;
@@ -53,4 +55,4 @@ int     main(int ac, char **av)
 	swap(&head_a);
 	printf("\n");
 	ft_print_list(head_a);
-}
+}*/

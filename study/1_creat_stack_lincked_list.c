@@ -6,7 +6,7 @@
 /*   By: joaoalme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 20:10:34 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/02/05 20:10:41 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/02/07 19:31:20 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,21 @@ typedef	struct s_element
 	int	nb;
 	struct s_element	*next;
 }	t_element;
+
+int	ft_size_list(t_element **stack)
+{
+	t_element	*head;
+	int	count;
+
+	head = *stack;
+	while (head != NULL)
+	{
+		head = head->next;
+		count++;
+	}
+	return (count);
+}
+
 
 void	ft_print_list(t_element * head) 
 {
@@ -50,28 +65,17 @@ t_element	*add_element_back(int nb, t_element *tail)
 	return(new_node);	
 }
 
-void	create_stacks(int ac, char **av)
-//int     main(int ac, char **av)
+void	create_stack(int ac, char **av)
 {
-	t_element	*head_a;
-	t_element	*tail_a;
-	t_element	*head_b;
-	t_element	*tail_b;
+	t_element	*head;
 	int	count;
 
-	head_a = creat_node(atoi(av[1]));
-	tail_a = head_a;
-	head_b = creat_node(0);
-	tail_b = creat_node(0);
+	head = creat_node(atoi(av[1]));
 	count = 2;
 	while (count < ac)
 	{
 		tail_a = add_element_back(atoi(av[count]), tail_a);
 		count++;
-		}
+	}
 	ft_print_list(head_a);
-	ft_print_list(head_b);
-	(void)head_b;
-	(void)tail_b;
-//	return(0);
 }

@@ -6,7 +6,7 @@
 /*   By: joaoalme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 20:10:24 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/02/07 20:30:41 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/02/07 19:52:40 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,28 @@ void	ft_print_list(t_element * head)
         	printf("%d\n", head->nb);
         	head = head->next;
     	}
+}
+
+void	ft_print_stacks(t_element *head_a, t_element *head_b) 
+{
+    	ft_printf("stack a:\n");
+    	while (head_a != NULL) 
+	{
+        	printf("%d\n", head_a->nb);
+        	head_a = head_a->next;
+    	}
+    	ft_printf("stack b:\n");
+    	if (head_b != NULL)
+    	{
+   		while (head_b != NULL) 
+		{
+       	 	ft_printf("%d\n", head_b->nb);
+        		head_b = head_b->next;
+	    	}
+	}
+	ft_printf("---------------\n");
 }	
+	
 
 t_element	*creat_node (int nb)
 {
@@ -80,20 +101,19 @@ void	add_element_front(int nb, t_element **head)
 	*head = new_node;
 }
 
-t_element	*create_stacks(int ac, char **av)
+t_element	*create_stack(int ac, char **av)
 {
 	t_element	*head;
 	t_element	*tail;
-	int	index;
+	int	count;
 
-	index = 1;
-	head = creat_node(ft_atoi(av[index]));
+	head = creat_node(ft_atoi(av[1]));
 	tail = head;
-	index++;
-	while (index < ac)
+	count = 2;
+	while (count < ac)
 	{
-		tail_a = add_element_back(atoi(av[index]), tail_a);
-		index++;
+		tail = add_element_back(atoi(av[count]), tail);
+		count++;
 	}
-	return(head_a);
+	return(head);
 }

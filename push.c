@@ -29,18 +29,18 @@ int	push_element(t_element **s_from, t_element **s_to)
 
 }
 
-void	pa(t_element **stack_b, t_element **stack_a)
+void	pa(t_element **stack_a, t_element **stack_b)
 {
 	push_element(stack_b, stack_a);
-	ft_printf("pa");
+	ft_printf("pa\n");
 }
 
 void	pb(t_element **stack_a, t_element **stack_b)
 {
 	push_element(stack_a, stack_b);
-	ft_printf("pa");
+	ft_printf("pb\n");
 }
-
+/*
 int     main(int ac, char **av)
 {
 	
@@ -58,4 +58,4 @@ int     main(int ac, char **av)
 	printf("stack a:\n");
 	ft_print_list(head_a);
 
-}
+}*/
