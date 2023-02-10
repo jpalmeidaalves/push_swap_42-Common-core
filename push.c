@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: joaoalme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/08 18:26:35 by joaoalme          #+#    #+#             */
+/*   Updated: 2023/02/08 18:26:39 by joaoalme         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	push_element(t_element **s_from, t_element **s_to)
@@ -6,8 +18,8 @@ int	push_element(t_element **s_from, t_element **s_to)
 	t_element	*head_to;
 	t_element	*tmp;
 
-	if(ft_size_list(s_from) == 0)
-		return(-1);
+	if (ft_size_list(s_from) == 0)
+		return (-1);
 	head_from = *s_from;
 	head_to = *s_to;
 	tmp = head_from;
@@ -25,8 +37,6 @@ int	push_element(t_element **s_from, t_element **s_to)
 		*s_to = tmp;
 	}
 	return (0);
-	
-
 }
 
 void	pa(t_element **stack_a, t_element **stack_b)
@@ -41,7 +51,7 @@ void	pb(t_element **stack_a, t_element **stack_b)
 	ft_printf("pb\n");
 }
 /*
-int     main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	
 	t_element	*head_a;

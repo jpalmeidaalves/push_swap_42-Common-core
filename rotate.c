@@ -1,14 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: joaoalme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/08 18:26:13 by joaoalme          #+#    #+#             */
+/*   Updated: 2023/02/08 18:27:00 by joaoalme         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	rotate(t_element **stack) 
+void	rotate(t_element **stack)
 {
 	t_element	*head;
-	t_element 	*tail;
+	t_element	*tail;
 	t_element	*current;
-	int	tmp;
+	int			tmp;
 
 	head = *stack;
-	tail = find_tail(head);
+	tail = find_tail(&head);
 	current = head;
 	tmp = head->nb;
 	while (current->next != NULL)
@@ -35,62 +47,36 @@ void	rr(t_element **stack_a, t_element **stack_b)
 {
 	rotate(stack_a);
 	rotate(stack_b);
-	ft_printf("rr\n");	
+	ft_printf("rr\n");
 }
 
-void	rev_rot(t_element **stack)
-{
-	t_element	*head;
-	t_element       *tail;
-        t_element       *current;
-        int     tmp;
-
-	head = *stack;
-        tail = find_tail(head);
-        current = tail;
-        tmp = tail->nb;
-        while (current->prev != NULL)
-        {
-		current->nb = current->prev->nb;
-		current = current->prev;
-        }
-        head->nb = tmp;
-}
-
-void	rra(t_element **stack_a)
-{
-	rev_rot(stack_a);
-	ft_printf("rra\n");
-}
-
-void	rrb(t_element **stack_b)
-{
-	rev_rot(stack_b);
-	ft_printf("rrb\n");
-}
-
-void	rrr(t_element **stack_a, t_element **stack_b)
-{
-	rev_rot(stack_a);
-	rev_rot(stack_b);
-	ft_printf("rrr\n");	
-}
 /*
-int     main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_element	*head_a;
+	t_element	**stack_a;
 	
-	head_a = create_stacks(ac, av);
+	stack_a = malloc(sizeof(t_element));
+	*stack_a = create_stack(ac, av);
 	printf("stack a:\n");
-	ft_print_list(head_a);
+	ft_print_list(stack_a);
+
 	
-	rra(&head_a);
+	ra(stack_a);
 	printf("stack a:\n");
-	ft_print_list(head_a);
-
-	ra(&head_a);
+	ft_print_list(stack_a);
+	
+	ra(stack_a);
 	printf("stack a:\n");
-	ft_print_list(head_a);
+	ft_print_list(stack_a);
 
-	return 0;	
+
+	ra(stack_a);
+	printf("stack a:\n");
+	ft_print_list(stack_a);
+
+	ra(stack_a);
+	printf("stack a:\n");
+	ft_print_list(stack_a);
+
+	return (0);	
 }*/
