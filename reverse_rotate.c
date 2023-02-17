@@ -16,15 +16,15 @@ void	rev_rot(t_element **stack)
 {
 	t_element	*head;
 	t_element	*tail;
-
+	
 	head = *stack;
 	tail = find_tail(&head);
 	while (head)
 	{
 		if (head->next->next == NULL)
 		{
-			head->next = NULL;
-			break ;
+			 head->next = NULL;
+			 break ;
 		}
 		head = head->next;
 	}

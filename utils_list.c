@@ -6,7 +6,7 @@
 /*   By: joaoalme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 20:10:24 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/02/10 16:20:06 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/02/16 20:42:53 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ t_element	*creat_node(int nb)
 		exit(EXIT_FAILURE);
 	new_elm->nb = nb;
 	new_elm->next = 0;
+	new_elm->index = -1;
 	return (new_elm);
 }
 
 t_element	*find_tail(t_element **stack)
 {
 	t_element	*tail;
-//	t_element	*head;
 
 	tail = *stack;
 	while (tail->next != NULL)
@@ -51,6 +51,36 @@ int	ft_size_list(t_element **stack)
 	return (count);
 }
 
+void	ft_set_ind(t_element **stack, int min, int ind)
+{
+	t_element	*curr;
+	
+	curr = *stack;
+	while (curr != NULL)
+	{
+		if (curr->nb == min)
+		{
+			curr->index = ind;
+			return;
+		}
+		curr = curr->next;
+	}
+}
+
+void	ft_indexing(t_element **stack)
+{
+	int	ind;
+	int	min;
+	
+	ind = 0;
+	while(ind < ft_size_list(stack))
+	{
+		min = search_low_ind(stack);
+		ft_set_ind(stack, min, ind);
+		ind++;
+	}
+}
+
 t_element	*add_element_back(int nb, t_element **head)
 {
 	t_element	*new_node;
@@ -59,16 +89,8 @@ t_element	*add_element_back(int nb, t_element **head)
 	tail = find_tail(head);
 	new_node = creat_node(nb);
 	tail->next = new_node;
+	new_node->prev = tail;
 	return (new_node);
-}
-
-void	add_element_front(int nb, t_element **head)
-{
-	t_element	*new_node;
-
-	new_node = creat_node(nb);
-	new_node->next = *head;
-	*head = new_node;
 }
 
 void	ft_print_list(t_element **stack)
@@ -78,7 +100,7 @@ void	ft_print_list(t_element **stack)
 	head = *stack;
 	while (head != NULL)
 	{
-		printf("%d\n", head->nb);
+		ft_printf("%d\n", head->nb);
 		head = head->next;
 	}
 }
@@ -93,9 +115,10 @@ void	ft_print_stacks(t_element **stack_a, t_element **stack_b)
 	ft_printf("stack a:\n");
 	while (head_a != NULL)
 	{
-		printf("%d\n", head_a->nb);
+		ft_printf("%d [%d]\n", head_a->nb, head_a->index);
 		head_a = head_a->next;
 	}
+	ft_printf("---------------\n");
 	ft_printf("stack b:\n");
 	if (head_b != NULL)
 	{

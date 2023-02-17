@@ -15,12 +15,17 @@
 void	swap(t_element **stack)
 {
 	t_element	*head;
-	int			temp;
+	int			temp_nb;
+	int			temp_ind;
 
 	head = *stack;
-	temp = head->nb;
+	temp_nb = head->nb;
+	temp_ind = head->index;
 	head->nb = head->next->nb;
-	head->next->nb = temp;
+	head->index = head->next->index;
+	head->next->nb = temp_nb;
+	head->next->index = temp_ind;
+	
 }
 
 void	sa(t_element **stack_a)

@@ -6,32 +6,11 @@
 /*   By: joaoalme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 12:46:52 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/02/10 16:29:16 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/02/16 20:45:28 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	sorting(t_element **stack_a, t_element **stack_b)
-{
-	int	nb_elem;
-
-	nb_elem = ft_size_list(stack_a);
-	if (nb_elem == 2)
-	{
-		(void)stack_b;
-		sa(stack_a);
-	}
-	else if (nb_elem == 3)
-	{
-		(void)stack_b;
-		hard_3(stack_a);
-	}
-	else if (nb_elem == 4)
-		hard_4(stack_a, stack_b);
-	else if (nb_elem == 5)
-		hard_5(stack_a, stack_b);
-}
 
 int	search_low(t_element **stack)
 {
@@ -48,6 +27,23 @@ int	search_low(t_element **stack)
 	}
 	return (min);
 }
+
+int	search_low_ind(t_element **stack)
+{
+	int			min;
+	t_element	*curr;
+
+	curr = *stack;
+	min = search_high(stack); 
+	while (curr != NULL)
+	{
+		if (curr->nb < min && curr->index == -1)
+			min = curr->nb;
+		curr = curr->next;
+	}
+	return (min);
+}
+
 
 int	search_high(t_element **stack)
 {
@@ -74,70 +70,61 @@ void	hard_3(t_element **stack)
 	curr = *stack;
 	min = search_low(&curr);
 	max = search_high(&curr);
-	if (curr->nb == min)
+	if (!is_sorted(stack))
 	{
-		sa(stack);
-		ra(stack);
+		if (curr->nb == min)
+		{
+			sa(stack);
+			ra(stack);
+		}
+		else if (curr->nb == max && curr->next->nb != min)
+		{
+			sa(stack);
+			rra(stack);
+		}
+		else if (curr->nb == max && curr->next->nb == min)
+			ra(stack);
+		else if (curr->next->nb == min && curr->nb != max)
+			sa(stack);
+		else
+			rra(stack);
 	}
-	else if (curr->nb == max && curr->next->nb != min)
-	{
-		sa(stack);
-		rra(stack);
-	}
-	else if (curr->nb == max && curr->next->nb == min)
-		ra(stack);
-	else if (curr->next->nb == min && curr->nb != max)
-		sa(stack);
-	else
-		rra(stack);
+}
+/*
+void    algo_big(t_element **stack_a, t_element **stack_b)
+{       
+        int                     min;
+
+        while   (ft_size_list(stack_a) > 3)
+        {
+                min = search_low(stack_a);
+                if (find_index(stack_a, min) < ft_size_list(stack_a) / 2)
+                {
+                        while ((*stack_a)->nb != min)
+                                ra(stack_a);
+                }
+                else    
+                        while ((*stack_a)->nb != min)
+                                rra(stack_a);
+                pb(stack_a, stack_b);
+        }       
+                hard_3(stack_a);
+                while (ft_size_list(stack_b) > 0)
+                        pa(stack_a, stack_b);
 }
 
-void	hard_4(t_element **stack_a, t_element **stack_b)
+int     find_index(t_element **stack, int nb)
 {
-	t_element	*head_a;
-	int			min;
+        t_element       *curr;
+        int                     index;
 
-	head_a = *stack_a;
-	min = search_low(stack_a);
-	while (head_a->nb != min)
-		ra(&head_a);
-	pb(stack_a, stack_b);
-	sorting(stack_a, stack_b);
-	pa(stack_a, stack_b);
+        curr = *stack;
+        index = 0;
+        while (curr->nb != nb)
+        {
+                curr = curr->next;
+                index++;
+        }
+        return (index);
 }
-
-void	rrr_a_and_pb(t_element **stk_a, t_element **stk_b)
-{
-	rra(stk_a);
-	pb(stk_a, stk_b);
-}
-
-
-void	hard_5(t_element **stack_a, t_element **stack_b)
-{
-	t_element	*head_a;
-	t_element	*tail_a;
-	int			min;
-
-	head_a = *stack_a;
-	tail_a = find_tail(&head_a);
-	min = search_low(stack_a);
-	if (min == tail_a->nb)
-		rrr_a_and_pb(stack_a, stack_b);
-	else
-	{
-		while (head_a->nb != min)
-			ra(stack_a);
-		pb(stack_a, stack_b);
-	}
-	head_a = *stack_a;
-	min = search_low(stack_a);
-	while (head_a->nb != min)
-		ra(&head_a);
-	pb(stack_a, stack_b);
-	hard_3(stack_a);
-	if (is_sorted(stack_b))
-		sb(stack_b);
-	pa(stack_a, stack_b);
-	pa(stack_a, stack_b);
-}
+*/

@@ -16,19 +16,12 @@ void	rotate(t_element **stack)
 {
 	t_element	*head;
 	t_element	*tail;
-	t_element	*current;
-	int			tmp;
 
 	head = *stack;
 	tail = find_tail(&head);
-	current = head;
-	tmp = head->nb;
-	while (current->next != NULL)
-	{
-		current->nb = current->next->nb;
-		current = current->next;
-	}
-	tail->nb = tmp;
+	*stack = head->next;
+	head->next = NULL;
+	tail->next = head;
 }
 
 void	ra(t_element **stack_a)

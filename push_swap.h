@@ -21,7 +21,9 @@
 typedef struct s_element
 {
 	int					nb;
+	int					index;
 	struct s_element	*next;
+	struct s_element	*prev;
 }						t_element;
 
 void					ft_print_list(t_element **stack);
@@ -54,12 +56,15 @@ int						ft_isnumb(char *arg);
 int						ft_repeated(char **args, int nb, int i);
 void					ft_validate_args(int ac, char **av);
 int						is_sorted(t_element **stack);
-void    sorting(t_element **stack_a, t_element **stack_b);
+void    sorting(t_element **stack_a, t_element **stack_b, int nb_elem);
 int     search_low(t_element    **stack);
 void    hard_3(t_element **stack);
 int     search_high(t_element **stack);
 void    hard_4(t_element **stack_a, t_element **stack_b);
 void    hard_5(t_element **stack_a, t_element **stack_b);
-void	free_stack(t_element **stack);
-
+void	free_stack(t_element **stack_a, t_element **stack_b);
+void    algo_big(t_element **stack_a, t_element **stack_b);
+int     find_distance(t_element **stack, int nb);
+void    ft_indexing(t_element **stack);
+int	search_low_ind(t_element **stack);
 #endif

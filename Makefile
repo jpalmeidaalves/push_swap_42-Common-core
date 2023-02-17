@@ -7,7 +7,7 @@ RM		= rm -rf
 
 LIBFT		= ./libft/libft.a
 
-SRC		= push_swap.c	push.c	rotate.c reverse_rotate.c swap.c utils_list.c validate_args.c	sort_algorithms.c		
+SRC		= push_swap.c	push.c	rotate.c reverse_rotate.c swap.c utils_list.c validate_args.c	sort_algorithms.c algo_big.c		
 OBJ		= $(SRC:.c=.o)
 	
 all: $(NAME)
