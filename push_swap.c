@@ -90,6 +90,7 @@ t_element       *create_stack(int ac, char **av, t_element **stack)
                 tail = add_element_back(ft_atoi(args[count]), &tail);
                 count++;
         }
+	ft_indexing(stack);
         return (*stack);
 }
 
@@ -116,6 +117,3 @@ int	main(int ac, char **av)
 	ft_free_stack(stack_a, stack_b);
 	return (0);
 }
-
-//ARG="34 5 6 87 45 44 -8"; ./push_swap $ARG
-

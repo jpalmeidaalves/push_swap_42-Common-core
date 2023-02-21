@@ -19,7 +19,7 @@ int	ft_count_moves(t_element **stack_a, t_element **stack_b)
 
 }*/
 
-
+/*
 void	algo_big(t_element **stack_a, t_element **stack_b)
 {
 	int			min;
@@ -40,7 +40,7 @@ void	algo_big(t_element **stack_a, t_element **stack_b)
 	while (ft_size_list(stack_b) > 0)
 		pa(stack_a, stack_b);
 }
-
+*/
 int	ft_find_distance(t_element **stack, int nb)
 {
 	t_element	*curr;
@@ -55,7 +55,7 @@ int	ft_find_distance(t_element **stack, int nb)
 	}
 	return (dist);
 }
-
+/*
 int     ft_find_ind_pos(t_element **stack, int ind)
 {
         t_element       *curr;
@@ -70,7 +70,8 @@ int     ft_find_ind_pos(t_element **stack, int ind)
         }
         return (dist);
 }
-/*
+*/
+
 void    algo_big(t_element **stack_a, t_element **stack_b)
 {
         int                     min;
@@ -92,4 +93,4 @@ void    algo_big(t_element **stack_a, t_element **stack_b)
         while (ft_size_list(stack_b) > 0)
                 pa(stack_a, stack_b);
 }
-*/
+
