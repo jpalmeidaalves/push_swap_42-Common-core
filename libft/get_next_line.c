@@ -6,7 +6,7 @@
 /*   By: joaoalme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:55:46 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/02/24 19:12:57 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/03/06 21:28:49 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*ft_copy_line(char *acum)
 	int		i;
 
 	i = 0;
-	if (!acum[i])
+	if (!acum[i] || !acum)
 		return (NULL);
 	while (acum[i] && acum[i] != '\n')
 		i++;
@@ -99,6 +99,11 @@ char	*ft_read_n_acum(int fd, char *acumulator)
 	char	*buf;
 	int		readed;
 
+	if (!acumulator)
+	{
+		acumulator = malloc(1);
+		acumulator[0] = '\0';
+	}
 	buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buf)
 		return (NULL);
@@ -118,18 +123,22 @@ char	*ft_read_n_acum(int fd, char *acumulator)
 	return (acumulator);
 }
 
-char	*ft_get_next_line(int fd)
+char	*get_next_line(int fd)
 {
 	char		*result_line;
-	static char	*arr_acum[4096];
+	static char	*acumulator;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	arr_acum[fd] = ft_read_n_acum(fd, arr_acum[fd]);
-	if (!arr_acum[fd])
-		return (NULL);
-	result_line = ft_copy_line(arr_acum[fd]);
-	arr_acum[fd] = ft_update_acum(arr_acum[fd]);
+	acumulator = ft_read_n_acum(fd, acumulator);
+	result_line = ft_copy_line(acumulator);
+	if (!acumulator)
+	{
+		free(result_line);
+		result_line = malloc(1);
+		result_line[0] = '\0';
+	}
+	acumulator = ft_update_acum(acumulator);
 	return (result_line);
 }
 /*
@@ -138,26 +147,22 @@ char	*ft_get_next_line(int fd)
 int	main(void)
 {
 	int	fd1;
-	int	fd2;
-	char	*str;
 	
-	fd1 = open("my_file.txt", O_RDONLY);
-	fd2 = open("my_file2", O_RDONLY);
-	str = get_next_line(fd1);
-	printf("%s", str);
-	free(str);
-	str = get_next_line(fd2);
-	printf("%s", str);
-	free(str);
-	str = get_next_line(fd1);
-	printf("%s", str);
-	free(str);
-	str = get_next_line(fd2);
-	printf("%s", str);
-	free(str);
-	close (fd1);
-	close (fd2);
+	fd1 = open("file1.txt", O_RDONLY);
+	char *str = get_next_line(fd1);
+	char *str2 = get_next_line(fd1);
+	char *str3 = get_next_line(fd1);
+	char *str4 = get_next_line(fd1);
 
+	printf("%s", str);
+	printf("%s", str2);
+	printf("%s", str3);
+	printf("%s", str4);
+	close (fd1);
+	free(str);
+	free(str2);
+	free(str3);
+	free(str4);
 	
 	return (0);
 }*/

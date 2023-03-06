@@ -21,7 +21,7 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100
+#  define BUFFER_SIZE 1
 # endif
 
 typedef struct s_list
@@ -97,7 +97,7 @@ void				ft_printhex(unsigned int nb, char c);
 
 char				*ft_strjoin_gnl(char *acum, char *buf);
 char				*ft_read_n_acum(int fd, char *acumulator);
-char				*ft_get_next_line(int fd);
+char				*get_next_line(int fd);
 char				*ft_copy_line(char *acum);
 char				*ft_update_acum(char *acum);
 char				*ft_strchr_gnl(char *s, int c);
