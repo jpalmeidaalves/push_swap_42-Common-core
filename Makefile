@@ -9,11 +9,11 @@ RM		= rm -rf
 
 LIBFT		= ./libft/libft.a
 
-SRC		= push_swap.c	build_stack.c	push.c	rotate.c reverse_rotate.c swap.c utils_list.c validate_args.c	sort_algorithms.c	print_func.c	utils.c		find_out_move_ab.c	utils_sort_big.c	apply_moves.c	find_out_move_ba.c
+SRC		= $(wildcard src/*.c)
 
 OBJ		= $(SRC:.c=.o)
 
-SRC_B		= checker.c	build_stack.c	push.c	rotate.c reverse_rotate.c swap.c utils_list.c validate_args.c	sort_algorithms.c	print_func.c	utils.c		find_out_move_ab.c	utils_sort_big.c	apply_moves.c	find_out_move_ba.c
+SRC_B		= $(wildcard bonus/*.c)
 
 OBJ_B		= $(SRC:.c=.o)
 
