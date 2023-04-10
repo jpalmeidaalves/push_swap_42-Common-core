@@ -41,11 +41,6 @@ void	build_stack(char **args, t_element *tail, int count)
 	while (args[count])
 	{
 		nb = ft_atoi(args[count]);
-		if (!nb)
-		{
-			ft_printf("Error\n");
-			exit(EXIT_FAILURE);
-		}
 		tail = add_element_back(nb, &tail);
 		count++;
 	}
