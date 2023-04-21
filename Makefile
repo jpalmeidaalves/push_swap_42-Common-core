@@ -3,7 +3,7 @@ PUSH_SWAP	= push_swap
 CHECKER		= checker
 
 CC      	= cc 
-CFLAGS		= -Wall -Werror -Wextra
+CFLAGS		= -Wall -Werror -Wextra -g
 
 RM		= rm -rf
 

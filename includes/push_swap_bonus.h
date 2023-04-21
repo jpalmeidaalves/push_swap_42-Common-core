@@ -6,7 +6,7 @@
 /*   By: joaoalme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 20:10:26 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/03/14 19:53:26 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/04/21 15:27:20 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,17 @@ t_element				*add_element_back(int nb, t_element **head);
 t_element				*find_tail(t_element **stack);
 int						f_size_l(t_element **stack);
 
-void					pa(t_element **stack_a, t_element **stack_b);
-void					pb(t_element **stack_a, t_element **stack_b);
-void					sa(t_element **stack_a);
-void					sb(t_element **stack_b);
-void					ss(t_element **stack_a, t_element **stack_b);
-void					ra(t_element **stack_a);
-void					rb(t_element **stack_b);
-void					rr(t_element **stack_a, t_element **stack_b);
-void					rra(t_element **stack_a);
-void					rrb(t_element **stack_b);
-void					rrr(t_element **stack_a, t_element **stack_b);
+int						pa(t_element **stack_a, t_element **stack_b);
+int						pb(t_element **stack_a, t_element **stack_b);
+int						sa(t_element **stack_a);
+int						sb(t_element **stack_b);
+int						ss(t_element **stack_a, t_element **stack_b);
+int						ra(t_element **stack_a);
+int						rb(t_element **stack_b);
+int						rr(t_element **stack_a, t_element **stack_b);
+int						rra(t_element **stack_a);
+int						rrb(t_element **stack_b);
+int						rrr(t_element **stack_a, t_element **stack_b);
 
 void					ft_validate_args(int ac, char **av);
 int						is_sorted(t_element **stack);
@@ -86,9 +86,9 @@ void					final_check(t_element **stack_a);
 void					free_stack(t_element **stack_a, t_element **stack_b);
 void					sorting(t_element **stack_a, t_element **stack_b,
 							int nb_elem);
-void					push(t_element **s_from, t_element **s_to);
-void					rotate(t_element **stack);
-void					rev_rot(t_element **stack);
-void					swap(t_element **stack);
+int						rotate(t_element **stack);
+int						rev_rot(t_element **stack);
+int						swap(t_element **stack);
+int						push(t_element **s_from, t_element **s_to);
 
 #endif

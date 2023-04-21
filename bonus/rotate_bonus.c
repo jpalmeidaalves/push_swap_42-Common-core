@@ -6,41 +6,51 @@
 /*   By: joaoalme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 18:26:13 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/03/14 19:45:18 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/04/21 15:25:18 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap_bonus.h"
 
-void	rotate(t_element **stack)
+int	rotate(t_element **stack)
 {
 	t_element	*head;
 	t_element	*tail;
 
+	if (f_size_l(stack) < 2)
+		return (1);
 	head = *stack;
 	tail = find_tail(&head);
 	*stack = head->next;
 	head->next = NULL;
 	tail->next = head;
+	return (0);
 }
 
-void	ra(t_element **stack_a)
+int	ra(t_element **stack_a)
 {
-	rotate(stack_a);
+	if (rotate(stack_a) == 1)
+		return (1);
 	ft_printf("ra\n");
+	return (0);
 }
 
-void	rb(t_element **stack_b)
+int	rb(t_element **stack_b)
 {
-	rotate(stack_b);
+	if (rotate(stack_b) == 1)
+		return (1);
 	ft_printf("rb\n");
+	return (0);
 }
 
-void	rr(t_element **stack_a, t_element **stack_b)
+int	rr(t_element **stack_a, t_element **stack_b)
 {
-	rotate(stack_a);
-	rotate(stack_b);
+	if (rotate(stack_a) == 1)
+		return (1);
+	if (rotate(stack_b) == 1)
+		return (1);
 	ft_printf("rr\n");
+	return (0);
 }
 
 /*

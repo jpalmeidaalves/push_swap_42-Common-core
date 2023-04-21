@@ -6,17 +6,19 @@
 /*   By: joaoalme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 18:51:44 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/03/14 19:45:09 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/04/21 15:24:39 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap_bonus.h"
 
-void	rev_rot(t_element **stack)
+int	rev_rot(t_element **stack)
 {
 	t_element	*head;
 	t_element	*tail;
 
+	if (f_size_l(stack) < 2)
+		return (1);
 	head = *stack;
 	tail = find_tail(&head);
 	while (head)
@@ -30,23 +32,31 @@ void	rev_rot(t_element **stack)
 	}
 	tail->next = *stack;
 	*stack = tail;
+	return (0);
 }
 
-void	rra(t_element **stack_a)
+int	rra(t_element **stack_a)
 {
-	rev_rot(stack_a);
+	if (rev_rot(stack_a) == 1)
+		return (1);
 	ft_printf("rra\n");
+	return (0);
 }
 
-void	rrb(t_element **stack_b)
+int	rrb(t_element **stack_b)
 {
-	rev_rot(stack_b);
+	if (rev_rot(stack_b) == 1)
+		return (1);
 	ft_printf("rrb\n");
+	return (0);
 }
 
-void	rrr(t_element **stack_a, t_element **stack_b)
+int	rrr(t_element **stack_a, t_element **stack_b)
 {
-	rev_rot(stack_a);
-	rev_rot(stack_b);
+	if (rev_rot(stack_a) == 1)
+		return (1);
+	if (rev_rot(stack_b) == 1)
+		return (1);
 	ft_printf("rrr\n");
+	return (0);
 }

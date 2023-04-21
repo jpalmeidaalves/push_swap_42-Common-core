@@ -6,18 +6,20 @@
 /*   By: joaoalme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 18:26:35 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/03/14 19:44:56 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/04/21 15:25:08 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap_bonus.h"
 
-void	push(t_element **s_from, t_element **s_to)
+int	push(t_element **s_from, t_element **s_to)
 {
 	t_element	*head_from;
 	t_element	*head_to;
 	t_element	*tmp;
 
+	if (f_size_l(s_from) == 0)
+		return (1);
 	head_from = *s_from;
 	head_to = *s_to;
 	tmp = head_from;
@@ -34,18 +36,23 @@ void	push(t_element **s_from, t_element **s_to)
 		tmp->next = head_to;
 		*s_to = tmp;
 	}
+	return (0);
 }
 
-void	pa(t_element **stack_a, t_element **stack_b)
+int	pa(t_element **stack_a, t_element **stack_b)
 {
-	push(stack_b, stack_a);
+	if (push(stack_b, stack_a) == 1)
+		return (1);
 	ft_printf("pa\n");
+	return (0);
 }
 
-void	pb(t_element **stack_a, t_element **stack_b)
+int	pb(t_element **stack_a, t_element **stack_b)
 {
-	push(stack_a, stack_b);
+	if (push(stack_a, stack_b) == 1)
+		return (1);
 	ft_printf("pb\n");
+	return (0);
 }
 /*
 int	main(int ac, char **av)
