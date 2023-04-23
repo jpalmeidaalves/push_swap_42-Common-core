@@ -60,7 +60,7 @@ void	make_move(t_element **stack_a, t_element **stack_b, char *line)
 
 void	final_check(t_element **stack_a)
 {
-	if (is_sorted(stack_a))
+	if (*stack_a && is_sorted(stack_a))
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
@@ -88,10 +88,7 @@ int	main(int ac, char **av)
 		free(line);
 		line = get_next_line(0);
 	}
-	if (*stack_a)
-		final_check(stack_a);
-	else
-		ft_printf("KO\n");
+	final_check(stack_a);
 	free(line);
 	free_stack(stack_a, stack_b);
 	return (0);
