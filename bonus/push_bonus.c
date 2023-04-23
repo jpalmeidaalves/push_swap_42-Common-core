@@ -35,6 +35,8 @@ int	push(t_element **s_from, t_element **s_to)
 	{
 		tmp->next = head_to;
 		*s_to = tmp;
+		if (f_size_l(s_from) == 0)
+			*s_from = NULL;
 	}
 	return (0);
 }

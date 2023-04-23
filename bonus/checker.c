@@ -88,7 +88,10 @@ int	main(int ac, char **av)
 		free(line);
 		line = get_next_line(0);
 	}
-	final_check(stack_a);
+	if (*stack_a)
+		final_check(stack_a);
+	else
+		ft_printf("KO\n");
 	free(line);
 	free_stack(stack_a, stack_b);
 	return (0);
